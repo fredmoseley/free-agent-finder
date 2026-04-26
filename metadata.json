@@ -1,0 +1,5 @@
+{
+  "name": "Free Agent Finder",
+  "description": "Find fantasy baseball free agents mentioned in articles by matching them against your league's CSV export.",
+  "requestFramePermissions": []
+}
