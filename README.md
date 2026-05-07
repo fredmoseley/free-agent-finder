@@ -56,6 +56,10 @@ Free Agent Finder is a powerful tool designed for fantasy baseball enthusiasts. 
 3. **Run Match**: The AI will extract mentioned players, and the app will filter them against your CSV to show you who is actually available in your league.
 4. **Review Results**: Use the "Matched Players" section to see suggested bids and context, grouped by position.
 
+## ⚠️ Known Limitations
+
+- **Free Agent Pool Only**: The application currently only matches players that are present in the uploaded Free Agent CSV. If an article mentions a player who is currently in the minor leagues (and thus not in your league's free agent pool export), they will not appear in the matched results.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request or open an issue for suggestions and bug reports.

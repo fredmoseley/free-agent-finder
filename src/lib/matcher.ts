@@ -18,10 +18,16 @@ export function matchPlayers(
   const possible: MatchResult[] = [];
   const seenIds = new Set<string>();
 
+  const quickNormalize = (s: string) => 
+    s.normalize('NFD')
+     .replace(/[\u0300-\u036f]/g, "")
+     .toLowerCase()
+     .trim();
+
   // 1. Exact Matching
   articlePlayers.forEach(articlePlayer => {
-    const normalizedName = articlePlayer.name.toLowerCase().trim();
-    const exactMatches = csvPlayers.filter(p => p.name.toLowerCase() === normalizedName);
+    const normalizedName = quickNormalize(articlePlayer.name);
+    const exactMatches = csvPlayers.filter(p => quickNormalize(p.name) === normalizedName);
     
     exactMatches.forEach(p => {
       if (!seenIds.has(p.id)) {
@@ -62,7 +68,12 @@ export function matchPlayers(
       const csvParts = csvName.split(/\s+/);
 
       if (extractedParts.length > 1 && csvParts.length > 1) {
-        const normalize = (s: string) => s.toLowerCase().replace(/[^\w]/g, '').trim();
+        const normalize = (s: string) => 
+          s.normalize('NFD')
+           .replace(/[\u0300-\u036f]/g, "")
+           .toLowerCase()
+           .replace(/[^\w]/g, '')
+           .trim();
         
         const extractedFirst = normalize(extractedParts[0]);
         const extractedLast = normalize(extractedParts[extractedParts.length - 1]);
